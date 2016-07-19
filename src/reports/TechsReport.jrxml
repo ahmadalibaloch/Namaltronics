@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using an evaluation version of JasperAssistant (http://www.jasperassistant.com) -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="JobsReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30">
+	<property name="com.jasperassistant.designer.Grid" value="false"/>
+	<property name="com.jasperassistant.designer.SnapToGrid" value="false"/>
+	<property name="com.jasperassistant.designer.GridWidth" value="12"/>
+	<property name="com.jasperassistant.designer.GridHeight" value="12"/>
+	<parameter name="title" class="java.lang.String"/>
+	<parameter name="available" class="java.lang.Integer"/>
+	<parameter name="busy" class="java.lang.Integer"/>
+	<parameter name="pending" class="java.lang.Integer"/>
+	<parameter name="date" class="java.lang.String"/>
+	<field name="techId" class="java.lang.Integer"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="jobsCount" class="java.lang.Integer"/>
+	<field name="performance" class="java.lang.String"/>
+	<field name="skilLevel" class="java.lang.String"/>
+	<variable name="techNumber" class="java.lang.Integer" incrementType="Group" incrementGroup="techGroup" calculation="Count">
+		<variableExpression><![CDATA[Boolean.TRUE]]></variableExpression>
+		<initialValueExpression><![CDATA[$V{COLUMN_COUNT}]]></initialValueExpression>
+	</variable>
+	<group name="techGroup">
+		<groupExpression><![CDATA[$F{techId}]]></groupExpression>
+	</group>
+	<title>
+		<band height="119">
+			<rectangle>
+				<reportElement x="1" y="88" width="555" height="31" backcolor="#BFBFBF"/>
+			</rectangle>
+			<textField hyperlinkType="None">
+				<reportElement x="529" y="49" width="23" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="483" y="49" width="48" height="20" backcolor="#E9E9E9"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Pager:]]></text>
+			</staticText>
+			<elementGroup>
+				<staticText>
+					<reportElement x="51" y="99" width="54" height="20"/>
+					<box>
+						<pen lineWidth="0.0" lineStyle="Solid"/>
+					</box>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ID]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="118" y="99" width="61" height="20"/>
+					<box>
+						<pen lineWidth="0.0" lineStyle="Solid"/>
+					</box>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="194" y="99" width="63" height="20"/>
+					<box>
+						<pen lineWidth="0.0" lineStyle="Solid"/>
+					</box>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Skill Level]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="272" y="99" width="65" height="20"/>
+					<box>
+						<pen lineWidth="0.0" lineStyle="Solid"/>
+					</box>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Status]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="347" y="99" width="65" height="20"/>
+					<box>
+						<pen lineWidth="0.0" lineStyle="Solid"/>
+					</box>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Jobs Assigned]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="430" y="99" width="65" height="20"/>
+					<box>
+						<pen lineWidth="0.0" lineStyle="Solid"/>
+					</box>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Performance]]></text>
+				</staticText>
+			</elementGroup>
+			<staticText>
+				<reportElement x="11" y="49" width="44" height="20"/>
+				<textElement>
+					<font isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField hyperlinkType="None">
+				<reportElement x="58" y="49" width="80" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="137" y="9" width="300" height="57"/>
+				<textElement textAlignment="Center">
+					<font size="28" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{title}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="27">
+			<textField hyperlinkType="None">
+				<reportElement x="271" y="3" width="65" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="193" y="2" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{skilLevel}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="118" y="1" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="51" y="0" width="56" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{techId}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="2" y="-1" width="35" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA["."+$V{techNumber}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="429" y="2" width="83" height="20"/>
+				<textElement markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{performance}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="347" y="2" width="67" height="20"/>
+				<textElement markup="none"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{jobsCount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="56">
+			<textField evaluationTime="Report" hyperlinkType="None">
+				<reportElement x="516" y="36" width="30" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="443" y="36" width="70" height="20" backcolor="#E9E9E9"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Technicians:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="36" width="59" height="20" backcolor="#E9E9E9"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Available:]]></text>
+			</staticText>
+			<textField evaluationTime="Report" hyperlinkType="None">
+				<reportElement x="60" y="36" width="26" height="20"/>
+				<textElement verticalAlignment="Bottom" markup="none"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$P{available}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="100" y="36" width="41" height="20" backcolor="#E9E9E9"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Busy:]]></text>
+			</staticText>
+			<textField evaluationTime="Report" hyperlinkType="None">
+				<reportElement x="143" y="36" width="24" height="20"/>
+				<textElement verticalAlignment="Bottom" markup="none"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$P{busy}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="186" y="36" width="63" height="20" backcolor="#E9E9E9"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pending :]]></text>
+			</staticText>
+			<textField evaluationTime="Report" hyperlinkType="None">
+				<reportElement x="255" y="36" width="24" height="20"/>
+				<textElement verticalAlignment="Bottom" markup="none"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$P{pending}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
